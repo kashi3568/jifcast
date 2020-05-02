@@ -17,3 +17,6 @@ color: #4F978D;
 .navItem :hover{
     cursor: pointer;
 } 
+.navItem img{
+    height: 28px;
+}
