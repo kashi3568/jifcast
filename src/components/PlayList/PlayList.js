@@ -11,9 +11,9 @@ const PlayList = () => {
                 PlayList
             </div>
             <div>
-                <PlayListItems imgLogo={playlistlogo1} title="JoeRogan" name="JRE MMA Show #75 with Dan Hardy" description="Joe is joined by former welterweight fighter and UFC commentator, Dan Hardy." likes="84" listen="96"  />
-                <PlayListItems imgLogo={playlistlogo2} title="myfavoritemurder" name="MFM Minisode 13" description="This week’s hometowns include serial killer connections and an acid trip discovery." likes="43" listen="87"  />
-                <PlayListItems imgLogo={playlistlogo1} title="JoeRogan" name="JRE MMA Show #75 with Dan Hardy" description="Joe is joined by former welterweight fighter and UFC commentator, Dan Hardy." likes="84" listen="96"  />
+                <PlayListItems imgLogo={playlistlogo1} name="JoeRogan" title="JRE MMA Show #75 with Dan Hardy" description="Joe is joined by former welterweight fighter and UFC commentator, Dan Hardy." likes="84" listen="96"  />
+                <PlayListItems imgLogo={playlistlogo2} name="myfavoritemurder" title="MFM Minisode 13" description="This week’s hometowns include serial killer connections and an acid trip discovery." likes="43" listen="87"  />
+                <PlayListItems imgLogo={playlistlogo1} name="JoeRogan" title="JRE MMA Show #75 with Dan Hardy" description="Joe is joined by former welterweight fighter and UFC commentator, Dan Hardy." likes="84" listen="96"  />
             </div>
         </div>
     )

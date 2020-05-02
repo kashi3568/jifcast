@@ -21,7 +21,9 @@ const PlayListItems = ({imgLogo, name, title, description, likes, listen, cloud}
                 <div className={classes.likebar}>
                     <div className={classes.likesContainer}>
                         <img src={heart} alt={heart} />
+                        <div>
                         {likes}
+                        </div>
                     </div>
                     <div className={classes.likesContainer}>
                         <img src={headphone} alt={headphone} />
