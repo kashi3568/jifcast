@@ -7,8 +7,7 @@ const NavItem = ({imgSrc, text}) => {
             <img src={imgSrc} alt={imgSrc} />
             <div>
             {text}
-            </div>
-            
+            </div>    
         </div>
     )
 }

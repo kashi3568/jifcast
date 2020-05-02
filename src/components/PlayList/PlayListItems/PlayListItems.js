@@ -34,8 +34,8 @@ const PlayListItems = ({imgLogo, name, title, description, likes, listen, cloud}
                     <BorderLinearProgress
                     className={classes.margin}
                      variant="determinate"
-                  color="secondary"
-                   value={50}
+                     color="secondary"
+                     value={50}
                   />
                 </div>
             </div>
