@@ -1,7 +1,7 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head'
+import styles from '../styles/Home.module.css'
 
-function Home({ name }) {
+export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -11,11 +11,11 @@ function Home({ name }) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!{name}</a>
+          Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{" "}
+          Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
 
@@ -56,25 +56,10 @@ function Home({ name }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by{' '}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
-  );
+  )
 }
-
-export default Home;
-
-export async function getStaticProps () {
-  const res = await fetch('https://jsonplaceholder.typicode.com/todos/')
-  const response = await res.json();
-  const random = Math.round(Math.random() * 10); 
-  const title = response[random].title;
-  return {
-    props: {
-      name: title,
-    },
-    revalidate: 1,
-  };
-};
