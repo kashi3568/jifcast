@@ -1,30 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#  [Next.js](https://nextjs.org/) on Heroku
 
-## Getting Started
+Deploy [React](https://facebook.github.io/react/)-based universal web apps on [Heroku](https://www.heroku.com/home).
 
-First, run the development server:
+**Demo deployment** from this repo:  
+https://nextjs.herokuapp.com
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+**A custom Node/Express server** is supported. Use it to:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* combine a Node API with a Next/React UI
+* implement custom URL routes
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+▶️ **[Next with custom Express server](https://github.com/mars/heroku-nextjs-custom-server-express)**
 
-## Learn More
+## Requires
 
-To learn more about Next.js, take a look at the following resources:
+* Heroku
+  * [command-line tools (CLI)](https://devcenter.heroku.com/articles/heroku-command-line)
+  * [a free account](https://signup.heroku.com)
+* [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [Node.js](https://nodejs.org)
+* [Next.js](https://github.com/zeit/next.js)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Production deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Once you have a [Next app working locally](https://nextjs.org/docs/#setup), you may deploy it for public access.
 
-## Deploy on Vercel
+1. Revise the `npm start` script to set the [web listener `$PORT`](https://devcenter.heroku.com/articles/dynos#local-environment-variables):
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   Merge this entry into **package.json**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```json
+   {
+     "scripts": {
+       "dev": "next",
+       "build": "next build",
+       "start": "next start -p $PORT"
+     }
+   }
+   ```
+
+   ⭐️ *In March 2019, [Heroku began running `npm run build` automatically](https://devcenter.heroku.com/changelog-items/1573), so the old `heroku-postbuild` script entry is no longer required.*
+
+1. Ensure the app is a git repo, ignoring local-only directories:
+
+   ```bash
+   git init
+   (echo node_modules/ && echo .next/) >> .gitignore
+   ```
+1. Create the Heroku app:
+
+   ```bash
+   heroku create $APP_NAME
+   ```
+1. 🚀 Deploy:
+
+   ```bash
+   git add .
+   git commit -m 'Next.js app on Heroku'
+   git push heroku master
+   ```
+1. ♻️ Deploy changes: add, commit, & push again.
+
+## Custom Config
+
+Next itself supports build & runtime configuration through the [next.config.js](https://nextjs.org/docs/#exposing-configuration-to-the-server--client-side) file.
+
+Use environment variables ([Heroku config vars](https://devcenter.heroku.com/articles/config-vars)) within your React components, no rebuilds required! Simply set [next.config.js](https://nextjs.org/docs/#exposing-configuration-to-the-server--client-side) values from the server's environment using `process.env` object.
